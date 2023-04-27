@@ -1,11 +1,11 @@
 import random
 
 class Player:
-    def __init__(self, name, race, player_class, starting_gold, daily_gold):
+    def __init__(self, name, race, player_class, starting_gold, starting_health, daily_gold):
         self.name = name
         self.race = race
         self.player_class = player_class
-        self.max_health = 100
+        self.max_health = starting_health
         self.max_mana = 50
         self.health = self.max_health
         self.mana = self.max_mana

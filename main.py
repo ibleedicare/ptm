@@ -3,7 +3,8 @@ from dungeon import Dungeon
 import random
 
 DAILY_CREDIT = 30
-player = Player("John", "Human", "Warrior", 30, DAILY_CREDIT)
+STARTING_HEALTH = 100
+player = Player("John", "Human", "Warrior", 30, STARTING_HEALTH, DAILY_CREDIT)
 # create list of dungeons
 dungeons = [Dungeon('Easy Dungeon', 1, 7), Dungeon('Medium Dungeon', 2, 11), Dungeon('Hard Dungeon', 3, 20)]
 
@@ -36,3 +37,4 @@ while True:
         print('Congratulations! You have won the game!')
         break
     player.gold += DAILY_CREDIT
+    player.health = STARTING_HEALTH

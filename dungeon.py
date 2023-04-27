@@ -1,4 +1,5 @@
 import random
+from colorama import Fore, Style
 
 class Dungeon:
     def __init__(self, name, difficulty, cost):
@@ -26,14 +27,18 @@ class Dungeon:
                     damage = random.randint(1, 10) * player.skills['attack']
                     monster_health -= damage
                     print(f'You dealt {damage} damage to the monster!')
-                    print(f"Monster's current health: {monster_health}")
+                    if (monster_health <=0):
+                        monster_health = 0
+                    print(f"Monster's current health: {Fore.RED}{monster_health}{Style.RESET_ALL}")
                 elif action == '2':
                     if player.mana >= 10:
                         damage = random.randint(10, 20) * player.skills['magic']
                         monster_health -= damage
                         player.mana -= 10
                         print(f'You cast a spell and dealt {damage} damage to the monster!')
-                        print(f"Monster's current health: {monster_health}")
+                    if (monster_health <=0):
+                        monster_health = 0
+                        print(f"Monster's current health: {Fore.RED}{monster_health}{Style.RESET_ALL}")
                     else:
                         print('Not enough mana!')
                 else:
@@ -45,7 +50,7 @@ class Dungeon:
                     player_health -= monster_damage
                     player.health = player_health
                     print(f'The monster attacked you and dealt {monster_damage} damage!')
-                    print(f"Your current health: {player_health}")
+                    print(f"Your current health: {Fore.GREEN}{player_health}{Style.RESET_ALL}")
                 # Check if player is dead
                 if player.health <= 0:
                     print('You died!')
