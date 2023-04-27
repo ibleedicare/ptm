@@ -20,13 +20,13 @@ class Dungeon:
             monster_health = random.randint(50, 100) * self.difficulty
             print(f'Encountered a monster with {monster_health} health!')
             while monster_health > 0 and player.health > 0:
-                action = input('What do you want to do? (attack/magic)')
-                if action == 'attack':
+                action = input('What do you want to do? (1-Attack / 2-Magic)')
+                if action == '1':
                     damage = random.randint(1, 10) * player.skills['attack']
                     monster_health -= damage
                     print(f'You dealt {damage} damage to the monster!')
                     print(f"Monster's current health: {monster_health}")
-                elif action == 'magic':
+                elif action == '2':
                     if player.mana >= 10:
                         damage = random.randint(10, 20) * player.skills['magic']
                         monster_health -= damage
