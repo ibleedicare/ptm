@@ -1,17 +1,20 @@
 from player import Player
 from dungeon import Dungeon
+from colorama import Fore, Style
 import random
 
 DAILY_CREDIT = 30
 STARTING_HEALTH = 100
+DAY = 1
 player = Player("John", "Human", "Warrior", 30, STARTING_HEALTH, DAILY_CREDIT)
 # create list of dungeons
 dungeons = [Dungeon('Easy Dungeon', 1, 7), Dungeon('Medium Dungeon', 2, 11), Dungeon('Hard Dungeon', 3, 20)]
 
 # game loop
 while True:
+    print(f"=== DAY {DAY} ===")
     # print player stats
-    print(f'Gold: {player.gold}, Health: {player.health}, Mana: {player.mana}, Experience: {player.experience}')
+    print(f'Gold: {Fore.YELLOW}{player.gold}{Style.RESET_ALL}, Health: {Fore.GREEN}{player.health}{Style.RESET_ALL}, Mana: {Fore.BLUE}{player.mana}{Style.RESET_ALL}, Experience: {Fore.MAGENTA}{player.experience}{Style.RESET_ALL}')
 
     # print available dungeons
     print('Available Dungeons:')
@@ -38,3 +41,4 @@ while True:
         break
     player.gold += DAILY_CREDIT
     player.health = STARTING_HEALTH
+    DAY += 1

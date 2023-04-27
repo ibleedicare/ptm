@@ -17,3 +17,11 @@ class Player:
             'defense': 1,
             'magic': 1
         }
+    def level_up(self):
+        self.skills['attack'] += 1
+        self.skills['defense'] += 1
+        self.skills['magic'] += 1
+        self.max_health += 10
+        self.health = self.max_health
+        self.max_mana += 10
+        self.mana = self.max_mana
