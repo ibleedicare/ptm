@@ -20,6 +20,7 @@ class Dungeon:
             monster_health = random.randint(50, 100) * self.difficulty
             print(f'Encountered a monster with {monster_health} health!')
             while monster_health > 0 and player.health > 0:
+                # Player's turn
                 action = input('What do you want to do? (1-Attack / 2-Magic)')
                 if action == '1':
                     damage = random.randint(1, 10) * player.skills['attack']
@@ -37,15 +38,25 @@ class Dungeon:
                         print('Not enough mana!')
                 else:
                     print('Invalid action!')
-                if monster_health <= 0:
-                    self.reward = random.randint(10, 20) * self.difficulty
-                    print(f'You defeated the monster and found {self.reward} gold!')
-                    player.experience += 10 * self.difficulty
-                    rare_drop_chance = random.randint(1, 10)
-                    if rare_drop_chance == 1:
-                        self.rare_drop = 'rare item'
-                        print('You found a rare item!')
-                    break
-            if player.health <= 0:
-                print('You died!')
-                exit()
+                # Monster's turn
+                if monster_health > 0:
+                    player_health = player.health
+                    monster_damage = random.randint(1, 10) * self.difficulty
+                    player_health -= monster_damage
+                    player.health = player_health
+                    print(f'The monster attacked you and dealt {monster_damage} damage!')
+                    print(f"Your current health: {player_health}")
+                # Check if player is dead
+                if player.health <= 0:
+                    print('You died!')
+                    exit()
+            # Player defeated the monster
+            self.reward = random.randint(10, 20) * self.difficulty
+            player.gold += self.reward # Update the player's gold
+            print(f'You defeated the monster and found {self.reward} gold!')
+            player.experience += 10 * self.difficulty
+            rare_drop_chance = random.randint(1, 10)
+        if rare_drop_chance == 1:
+            self.rare_drop = 'rare item'
+            print('You found a rare item!')
+
