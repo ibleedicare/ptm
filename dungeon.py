@@ -25,12 +25,14 @@ class Dungeon:
                     damage = random.randint(1, 10) * player.skills['attack']
                     monster_health -= damage
                     print(f'You dealt {damage} damage to the monster!')
+                    print(f"Monster's current health: {monster_health}")
                 elif action == 'magic':
                     if player.mana >= 10:
                         damage = random.randint(10, 20) * player.skills['magic']
                         monster_health -= damage
                         player.mana -= 10
                         print(f'You cast a spell and dealt {damage} damage to the monster!')
+                        print(f"Monster's current health: {monster_health}")
                     else:
                         print('Not enough mana!')
                 else:

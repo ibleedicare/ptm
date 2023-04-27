@@ -2,7 +2,8 @@ from player import Player
 from dungeon import Dungeon
 import random
 
-player = Player("John", "Human", "Warrior", 30)
+DAILY_CREDIT = 30
+player = Player("John", "Human", "Warrior", 30, DAILY_CREDIT)
 # create list of dungeons
 dungeons = [Dungeon('Easy Dungeon', 1, 7), Dungeon('Medium Dungeon', 2, 11), Dungeon('Hard Dungeon', 3, 20)]
 
@@ -34,3 +35,4 @@ while True:
     if player.gold >= 1000:
         print('Congratulations! You have won the game!')
         break
+    player.gold += DAILY_CREDIT
