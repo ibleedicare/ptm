@@ -14,6 +14,7 @@ class Dungeon:
         encounter = random.choice(['chest', 'monster'])
         if encounter == 'chest':
             self.reward = random.randint(1, 10) * self.difficulty
+            player.gold += self.reward # Update the player's gold
             print(f'Found {self.reward} gold in a chest!')
         elif encounter == 'monster':
             monster_health = random.randint(50, 100) * self.difficulty
